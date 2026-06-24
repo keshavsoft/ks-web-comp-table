@@ -4,9 +4,9 @@ export default {
     build: {
         lib: {
             entry: "src/header.js",
-            name: "KSTableFoot",
+            name: "KSTableComponents",
             formats: ["umd"],
-            fileName: () => `${templateVersion}/KSTableFoot.js`
+            fileName: () => `${templateVersion}/KSTableComponents.js`
         },
         outDir: "Public",
         emptyOutDir: false
