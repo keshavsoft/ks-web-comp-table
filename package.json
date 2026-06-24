@@ -1,0 +1,43 @@
+{
+  "name": "ks-web-comp-table",
+  "version": "1.1.1",
+  "description": "CLI to scaffold projects using templates",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "todo",
+    "tailwind-todo",
+    "boilerplate",
+    "scaffold",
+    "starter",
+    "template",
+    "cli"
+  ],
+  "scripts": {
+    "build:header": "vite build --config vite.header.config.js"
+  },
+  "devDependencies": {
+    "vite": "^8.0.14"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "tailwind-header-dom": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://keshavsoft.github.io/ks-web-comp-table/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/ks-web-comp-table.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keshavsoft/ks-web-comp-table/issues"
+  }
+}

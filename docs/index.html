@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>tailwind-todo CLI</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .codeBlock {
+      position: relative;
+
+      background: #1e293b;
+      border-radius: 10px;
+
+      padding: 22px;
+
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding-right: 90px;
+    }
+
+    code {
+      color: #38bdf8;
+      font-size: 18px;
+    }
+
+    .copyBtn {
+      position: absolute;
+
+      top: 14px;
+      right: 14px;
+
+      padding: 8px 14px;
+
+      border: none;
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      background: #38bdf8;
+      color: black;
+
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .copyBtn:hover {
+      transform: scale(1.05);
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #cbd5e1;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .footer {
+      margin-top: 60px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>tailwind-todo</h1>
+
+    <p>
+      CLI to scaffold Tailwind starter projects quickly.
+    </p>
+
+    <h2>Install</h2>
+
+    <div class="codeBlock">
+
+      <pre><code id="installCmd">npm install -g tailwind-todo</code></pre>
+
+      <button class="copyBtn" onclick="copyText('installCmd')">
+        Copy
+      </button>
+
+    </div>
+
+    <p>or</p>
+
+    <div class="codeBlock">
+
+      <pre><code id="npxCmd">npx tailwind-todo</code></pre>
+
+      <button class="copyBtn" onclick="copyText('npxCmd')">
+        Copy
+      </button>
+
+    </div>
+
+    <h2>Usage</h2>
+
+    <div class="codeBlock">
+
+      <pre><code id="usageCmd">tailwind-todo</code></pre>
+
+      <button class="copyBtn" onclick="copyText('usageCmd')">
+        Copy
+      </button>
+
+    </div>
+
+    <h2>Features</h2>
+
+    <ul>
+      <li>Tailwind starter setup</li>
+      <li>Boilerplate generation</li>
+      <li>CLI based workflow</li>
+      <li>Fast project scaffolding</li>
+      <li>Zero dependency</li>
+      <li>Simple folder structure</li>
+    </ul>
+
+    <h2>GitHub</h2>
+
+    <p>
+      <a href="https://github.com/keshavsoft/tailwind-todo" target="_blank">
+
+        github.com/keshavsoft/tailwind-todo
+
+      </a>
+    </p>
+
+    <div class="footer">
+      © 2026 KeshavSoft
+    </div>
+
+  </div>
+
+  <script>
+    const copyText = (id) => {
+
+      navigator.clipboard.writeText(
+        document.getElementById(id).innerText
+      );
+
+      alert("Copied!");
+    };
+  </script>
+</body>
+
+</html>

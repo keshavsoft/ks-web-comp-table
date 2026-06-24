@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tailwind-todo Documentation</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #020617;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        pre {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen">
+
+    <!-- HERO -->
+    <section class="max-w-7xl mx-auto px-6 py-24">
+
+        <div class="max-w-4xl">
+
+            <p class="uppercase tracking-[6px] text-sky-400 text-sm mb-6">
+                Frontend Boilerplate Generator
+            </p>
+
+            <h1 class="text-5xl md:text-7xl font-black leading-tight mb-8">
+    <span class="bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400 
+    bg-clip-text text-transparent">
+        Tailwind UI Generator
+    </span>
+</h1>
+
+            <p class="text-slate-300 text-lg leading-9 max-w-3xl mb-10">
+                <span class="font-semibold text-white">tailwind-todo</span>
+                is a lightweight frontend scaffolding CLI that generates
+                reusable Tailwind frontend architecture automatically.
+                Instead of repeatedly creating folders, layouts,
+                headers, and starter files manually — this tool
+                generates them instantly with a single command.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+
+                <div class="glass px-5 py-3 rounded-2xl">
+                    Tailwind Based
+                </div>
+
+                <div class="glass px-5 py-3 rounded-2xl">
+                    Frontend Scaffolding
+                </div>
+
+                <div class="glass px-5 py-3 rounded-2xl">
+                    Reusable UI Structure
+                </div>
+
+                <div class="glass px-5 py-3 rounded-2xl">
+                    v1.3.1
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+
+        <div class="grid lg:grid-cols-2 gap-10">
+
+            <div class="glass rounded-3xl p-10">
+
+                <p class="text-rose-400 uppercase tracking-widest text-sm mb-4">
+                    The Problem
+                </p>
+
+                <h2 class="text-4xl font-bold mb-8">
+                    Frontend Setup Becomes Repetitive
+                </h2>
+
+                <div class="space-y-5 text-slate-300 leading-8">
+
+                    <p>
+                        Every frontend module usually starts with repetitive work:
+                    </p>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✖ Creating folders manually
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✖ Creating reusable Tailwind layouts repeatedly
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✖ Building headers again and again
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✖ Writing boilerplate frontend files manually
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✖ Losing development time on setup instead of features
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="glass rounded-3xl p-10">
+
+                <p class="text-emerald-400 uppercase tracking-widest text-sm mb-4">
+                    The Solution
+                </p>
+
+                <h2 class="text-4xl font-bold mb-8">
+                    Generate Everything Automatically
+                </h2>
+
+                <div class="space-y-5 text-slate-300 leading-8">
+
+                    <p>
+                        The <span class="text-white font-semibold">tailwind-todo</span>
+                        CLI generates frontend architecture instantly
+                        using a single command.
+                    </p>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✔ Generates Tailwind frontend structure
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✔ Creates reusable responsive UI
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✔ Saves frontend setup time
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✔ Produces editable boilerplate code
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-4">
+                        ✔ Easy to customize after generation
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXECUTION FLOW -->
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+
+        <div class="glass rounded-3xl p-10">
+
+            <p class="text-sky-400 uppercase tracking-widest text-sm mb-4">
+                Complete Execution Flow
+            </p>
+
+            <h2 class="text-4xl font-bold mb-10">
+                How To Use tailwind-todo
+            </h2>
+
+            <div class="space-y-10">
+
+                <!-- Step 1 -->
+                <div>
+
+                    <h3 class="text-2xl font-semibold mb-4">
+                        Step 1 — Create Express Architecture
+                    </h3>
+
+                    <p class="text-slate-300 mb-5 leading-8">
+                        First generate the base project structure using
+                        the <span class="text-white font-semibold">express-todo</span>
+                        CLI.
+                    </p>
+
+                    <pre class="bg-black rounded-2xl p-6 text-emerald-400">
+npx express-todo simple
+                    </pre>
+
+                </div>
+
+                <!-- Step 2 -->
+                <div>
+
+                    <h3 class="text-2xl font-semibold mb-4">
+                        Step 2 — Go To Public Folder
+                    </h3>
+
+                    <p class="text-slate-300 mb-5 leading-8">
+                        After generating the project structure,
+                        navigate into the Public folder.
+                    </p>
+
+                    <pre class="bg-black rounded-2xl p-6 text-sky-400">
+cd Public
+                    </pre>
+
+                </div>
+
+                <!-- Step 3 -->
+                <div>
+
+                    <h3 class="text-2xl font-semibold mb-4">
+                        Step 3 — Create V1 Folder Manually
+                    </h3>
+
+                    <p class="text-slate-300 mb-5 leading-8">
+                        Inside the Public folder,
+                        create a new folder named V1 manually.
+                    </p>
+
+                    <pre class="bg-black rounded-2xl p-6 text-yellow-400">
+mkdir V1
+                    </pre>
+
+                </div>
+
+                <!-- Step 4 -->
+                <div>
+
+                    <h3 class="text-2xl font-semibold mb-4">
+                        Step 4 — Enter V1 Folder
+                    </h3>
+
+                    <p class="text-slate-300 mb-5 leading-8">
+                        Move into the V1 folder.
+                    </p>
+
+                    <pre class="bg-black rounded-2xl p-6 text-purple-400">
+cd V1
+                    </pre>
+
+                </div>
+
+                <!-- Step 5 -->
+                <div>
+
+                    <h3 class="text-2xl font-semibold mb-4">
+                        Step 5 — Execute tailwind-todo
+                    </h3>
+
+                    <p class="text-slate-300 mb-5 leading-8">
+                        Now run the Tailwind frontend generator command.
+                    </p>
+
+                    <pre class="bg-black rounded-2xl p-6 text-green-400">
+npx tailwind-todo header
+                    </pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- COMMAND -->
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+
+        <div class="glass rounded-3xl p-10">
+
+            <p class="text-sky-400 uppercase tracking-widest text-sm mb-4">
+                Available Command
+            </p>
+
+            <h2 class="text-4xl font-bold mb-8">
+                CLI Usage
+            </h2>
+
+            <pre class="bg-black rounded-2xl p-8 text-slate-200 leading-9">
+tailwind-todo v1.3.1
+
+Usage:
+npx tailwind-todo &lt;command&gt; [options]
+
+Commands:
+header              a simple header
+
+Examples:
+npx tailwind-todo header
+
+Tip:
+npm i -g tailwind-todo
+            </pre>
+
+        </div>
+
+    </section>
+
+    <!-- GENERATED ARCHITECTURE -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+
+        <div class="glass rounded-3xl p-10">
+
+            <p class="text-sky-400 uppercase tracking-widest text-sm mb-4">
+                Generated Architecture
+            </p>
+
+            <h2 class="text-4xl font-bold mb-10">
+                Folder Structure Generated
+            </h2>
+
+            <pre class="bg-black rounded-3xl p-8 text-slate-300 leading-8">
+Public/
+│
+└── V1/
+    │
+    ├── index.html
+    │
+    └── Index/
+        │
+        ├── FormLoad/
+        │   │
+        │   ├── DomContentLoaded/
+        │   │   │
+        │   │   ├── buildHeader.js
+        │   │   ├── buildMenuItem.js
+        │   │   ├── runAfterDomLoad.js
+        │   │   └── start.js
+        │   │
+        │   └── start.js
+        │
+        └── start.js
+            </pre>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="glass rounded-3xl p-8">
+
+                <h3 class="text-2xl font-bold mb-5">
+                    Reusable Header
+                </h3>
+
+                <p class="text-slate-400 leading-8">
+                    Generates reusable responsive header architecture
+                    automatically.
+                </p>
+
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+
+                <h3 class="text-2xl font-bold mb-5">
+                    Tailwind UI
+                </h3>
+
+                <p class="text-slate-400 leading-8">
+                    Uses Tailwind CSS for fast frontend development
+                    and modern UI design.
+                </p>
+
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+
+                <h3 class="text-2xl font-bold mb-5">
+                    Editable Code
+                </h3>
+
+                <p class="text-slate-400 leading-8">
+                    All generated frontend files can be modified
+                    and customized easily.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800">
+
+        <div class="max-w-7xl mx-auto px-6 py-10">
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+
+                <div>
+
+                    <h3 class="font-bold text-2xl">
+                        tailwind-todo
+                    </h3>
+
+                    <p class="text-slate-500 mt-2">
+                        Frontend scaffolding simplified.
+                    </p>
+
+                </div>
+
+                <div class="text-slate-500">
+                    v1.3.1
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
