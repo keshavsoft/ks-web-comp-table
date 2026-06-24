@@ -18,33 +18,131 @@ const defaultOptions = {
     inType: "text"
 };
 
+const getAttr = (el, names) => {
+    for (const name of names) {
+        if (el.hasAttribute(name)) {
+            return el.getAttribute(name);
+        }
+    }
+    return null;
+};
+
+const getBoolAttr = (el, names) => {
+    for (const name of names) {
+        if (el.hasAttribute(name)) {
+            const val = el.getAttribute(name);
+            return val === "false" ? false : true;
+        }
+    }
+    return null;
+};
+
 const getInputOptions = ({ inElement }) => {
     const localName =
-        inElement.ksName || defaultOptions.inName;
+        inElement.ksName ||
+        getAttr(inElement, ["ksName", "ks-name", "name"]) ||
+        defaultOptions.inName;
 
-    // console.log("inElement : ", inElement);
+    const placeholder =
+        inElement.ksPlaceholder ||
+        getAttr(inElement, ["ksPlaceholder", "ks-placeholder", "placeholder"]) ||
+        defaultOptions.inPlaceholder;
+
+    const className =
+        inElement.ksClassName ||
+        getAttr(inElement, ["ksClassName", "ks-class-name", "class"]) ||
+        defaultOptions.inClassName;
+
+    const showDataList =
+        inElement.ksShowDataList !== undefined
+            ? inElement.ksShowDataList
+            : getBoolAttr(inElement, ["ksShowDataList", "ks-show-data-list"]);
+
+    const columnsConfig = (() => {
+        const val =
+            inElement.ksInColumnsConfig ||
+            getAttr(inElement, ["ksInColumnsConfig", "ks-in-columns-config"]);
+        if (typeof val === "string") {
+            try {
+                return JSON.parse(val);
+            } catch {
+                return defaultOptions.inColumnsConfig;
+            }
+        }
+        return val || defaultOptions.inColumnsConfig;
+    })();
+
+    const onChangeFunc =
+        inElement.ksOnChangeFunc ||
+        getAttr(inElement, ["ksOnChangeFunc", "ks-on-change-func"]);
+
+    const onChangeType =
+        inElement.ksOnChangeType ||
+        getAttr(inElement, ["ksOnChangeType", "ks-on-change-type"]);
+
+    const onKeyDown =
+        inElement.ksOnKeyDown ||
+        getAttr(inElement, ["ksOnKeyDown", "ks-on-key-down"]);
+
+    const onKeyDownType =
+        inElement.ksOnKeyDownType ||
+        getAttr(inElement, ["ksOnKeyDownType", "ks-on-key-down-type"]);
+
+    const rightAlign =
+        inElement.ksRightAlign !== undefined
+            ? inElement.ksRightAlign
+            : getBoolAttr(inElement, ["ksRightAlign", "ks-right-align", "right-align"]);
+
+    const width =
+        inElement.ksWidth ||
+        getAttr(inElement, ["ksWidth", "ks-width", "width"]) ||
+        defaultOptions.inWidth;
+
+    const inputClassName =
+        inElement.ksInputClassName ||
+        getAttr(inElement, ["ksInputClassName", "ks-input-class-name"]) ||
+        defaultOptions.inputClassName;
+
+    const dataListSource =
+        getAttr(inElement, ["ksDataListSource", "ks-data-list-source", "data-list-source"]) ||
+        defaultOptions.inDataListSource;
+
+    const dataListFillName =
+        getAttr(inElement, ["ksDataListFillName", "ks-data-list-fill-name", "data-list-fill-name"]) ||
+        defaultOptions.inDataListFillName;
+
+    const dataStore = inElement.dataStore || defaultOptions.inDataStore;
+
+    const inputClass =
+        getAttr(inElement, ["ksInputClass", "ks-input-class", "inputclass", "input-class"]) ||
+        defaultOptions.inputClass;
+
+    const type =
+        getAttr(inElement, ["ksType", "ks-type", "type"]) ||
+        defaultOptions.inType;
 
     return {
-        inPlaceholder: inElement.ksPlaceholder || defaultOptions.inPlaceholder,
+        inPlaceholder: placeholder,
         inName: localName,
-        inClassName: inElement.ksClassName || defaultOptions.inClassName,
-        inShowDataList: inElement.ksShowDataList,
-        inColumnsConfig: inElement.ksInColumnsConfig || defaultOptions.inColumnsConfig,
-        inOnChangeFunc: inElement.ksOnChangeFunc,
-        inOnChangeType: inElement.ksOnChangeType,
-        inOnKeyDown: inElement.ksOnKeyDown,
-        inOnKeyDownType: inElement.ksOnKeyDownType,
-        inRightAlign: inElement.ksRightAlign,
-        inWidth: inElement.ksWidth,
-        inputClassName: inElement.ksInputClassName,
-        inDataListSource: inElement.getAttribute("ksDataListSource") || defaultOptions.inDataListSource,
-        inDataListFillName: inElement.getAttribute("ksDataListFillName") || defaultOptions.inDataListFillName,
-        inDataStore: inElement.dataStore,
-        inputClass: inElement.getAttribute("ksInputClass") || defaultOptions.inputClass,
-        inType: inElement.getAttribute("ksType") || defaultOptions.inType
+        inClassName: className,
+        inShowDataList: showDataList,
+        inColumnsConfig: columnsConfig,
+        inOnChangeFunc: onChangeFunc,
+        inOnChangeType: onChangeType,
+        inOnKeyDown: onKeyDown,
+        inOnKeyDownType: onKeyDownType,
+        inRightAlign: rightAlign,
+        inWidth: width,
+        inputClassName: inputClassName,
+        inDataListSource: dataListSource,
+        inDataListFillName: dataListFillName,
+        inDataStore: dataStore,
+        inputClass: inputClass,
+        inType: type
     };
 };
 
 export { defaultOptions };
 export default getInputOptions;
+
 

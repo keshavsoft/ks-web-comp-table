@@ -1,4 +1,4 @@
-import getInputOptions from "./getInputOptions.js";
+import getInputOptions, { defaultOptions } from "./getInputOptions.js";
 import applyParentCellStyle from "./applyParentCellStyle.js";
 import createTextInput from "./createTextInput.js";
 import applyDataList from "./applyDataList.js";
@@ -47,4 +47,6 @@ class KsTableFooterInputCore extends HTMLElement {
     }
 }
 
+export { defaultOptions };
 export default KsTableFooterInputCore;
+
