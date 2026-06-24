@@ -1,5 +1,4 @@
 // import "./input.js";
-import "./Anchor/index.js";
-import "./Icon/index.js";
+import "./MenuItem/index.js";
 
 export default {};
