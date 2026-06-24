@@ -12,9 +12,20 @@
 
     <script src="../../Public/v2.6/KSTableComponents.js"></script>
 
+    <div>
+        <h3>Web Component Testing (ks-table-footer-input-core)</h3>
 
-    <!-- Interactive script -->
+        <!-- Static usage -->
+        <ks-table-footer-input-core name="staticInput" placeholder="Static Input..."></ks-table-footer-input-core>
+    </div>
 
+    <script>
+        // Dynamic usage: Create, configure, and append to body
+        const dynamicInput = document.createElement("ks-table-footer-input-core");
+        dynamicInput.setAttribute("name", "dynamicInput");
+        dynamicInput.setAttribute("placeholder", "Dynamic Input...");
+        document.body.appendChild(dynamicInput);
+    </script>
 </body>
 
 </html>

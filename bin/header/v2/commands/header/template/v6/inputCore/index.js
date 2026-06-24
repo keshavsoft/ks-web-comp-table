@@ -47,6 +47,10 @@ class KsTableFooterInputCore extends HTMLElement {
     }
 }
 
+if (!customElements.get("ks-table-footer-input-core")) {
+    customElements.define("ks-table-footer-input-core", KsTableFooterInputCore);
+};
+
 export { defaultOptions };
 export default KsTableFooterInputCore;
 
