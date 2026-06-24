@@ -7,6 +7,8 @@ import renderInput from "./renderInput.js";
 import attachEnterKeyEvent from "./attachEnterKeyEvent.js";
 
 class KsTableFooterInputCore extends HTMLElement {
+    static defaults = defaultOptions;
+
     connectedCallback() {
         const localOptions =
             getInputOptions({
