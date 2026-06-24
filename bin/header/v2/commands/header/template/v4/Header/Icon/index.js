@@ -1,7 +1,7 @@
 import icons from "./icons.js";
 
 export const createIcon = ({
-    inSvgName, inSvgDivClass = "size-6 flex items-center justify-center -----"
+    inSvgName, inSvgDivClass = "size-6 flex items-center justify-center"
 }) => {
     if (inSvgName in icons) {
         const icon = document
