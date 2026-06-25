@@ -30,7 +30,7 @@
             dynamicInput.setAttribute("name", "Qty");
             dynamicInput.setAttribute("placeholder", "Qty");
             dynamicInput.setAttribute("type", "number");
-            dynamicInput.setAttribute("onKeyDownType", "Qty");
+            // dynamicInput.setAttribute("onKeyDownType", "Qty");
             dynamicInput.setAttribute("enterAsTab", true);
             dynamicInput.setAttribute("evalformula", "OrigRate * Qty");
 
@@ -55,6 +55,8 @@
             dynamicInput.setAttribute("placeholder", "OrigRate");
             dynamicInput.setAttribute("type", "number");
             dynamicInput.setAttribute("onKeyDownType", "OrigRate");
+            dynamicInput.setAttribute("evalformula", "OrigRate * Qty");
+            dynamicInput.setAttribute("evalToControl", "Amount");
 
             document.body.appendChild(dynamicInput);
         };
@@ -66,6 +68,8 @@
             dynamicInput.setAttribute("placeholder", "Amount");
             dynamicInput.setAttribute("type", "number");
             dynamicInput.setAttribute("onKeyDownType", "Amount");
+            dynamicInput.setAttribute("evalformula", "Amount / Qty");
+            dynamicInput.setAttribute("evalToControl", "OrigRate");
 
             document.body.appendChild(dynamicInput);
         };

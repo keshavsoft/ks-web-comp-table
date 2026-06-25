@@ -17,22 +17,34 @@ const startFunc = ({
     currentInput, inClosestControl
 }) => {
     const closestTr = inClosestControl;
+    let el = currentInput.parentElement;
 
+    while (el && !el.tagName.includes("-")) {
+        el = el.parentElement;
+    };
+
+    const formula = el.getAttribute("evalformula");
+    const evalToControl = el.getAttribute("evalToControl");
+
+    // const currentName
     const values = Object.fromEntries(
         [...closestTr.querySelectorAll("input")]
             .map(i => [i.name, Number(i.value) || 0])
     );
 
-    const amount = evaluateFormula({
-        formula: "OrigRate * Qty",
-        values
+    const toShowValue = evaluateFormula({
+        formula, values
     });
+    // console.log("aaaaaa : ", evalToControl, toShowValue);
 
-    closestTr.querySelector('input[name="Amount"]').value = amount.toFixed(2);
+    // closestTr.querySelector('input[name="Amount"]').value = toShowValue.toFixed(2);
+    closestTr.querySelector(`input[name="${evalToControl}"]`).value = toShowValue.toFixed(2);
+
+    // evalToControl.value = toShowValue.toFixed(2);
 
     showCalcMessage({
         input: currentInput,
-        message: `Amount change : ${amount}`
+        message: `Amount change : ${toShowValue}`
     });
 };
 

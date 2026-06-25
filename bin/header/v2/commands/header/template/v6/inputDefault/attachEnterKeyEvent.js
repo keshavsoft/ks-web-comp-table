@@ -8,7 +8,6 @@ const startFunc = (input) => {
         const ksOnKeyDownType = currentTarget.getAttribute("onKeyDownType");
 
         if (event.key === "Enter") {
-            // console.log("ooooooo : ", event.key);
             executeKeyDownType({
                 currentInput: inputElement,
                 inOnKeyDownType: ksOnKeyDownType,

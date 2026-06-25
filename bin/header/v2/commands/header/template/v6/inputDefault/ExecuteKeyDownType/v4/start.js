@@ -18,11 +18,13 @@ const executeKeyDownType = ({
     // console.log("vvvvvvvvv : ", closestControl, inOnKeyDownType);
     switch (inOnKeyDownType) {
         case "Amount":
-            Amount({ currentInput, inClosestControl: closestControl });
+            origRate({ currentInput, inClosestControl: closestControl });
             break;
 
         case "Qty":
-            qty({ currentInput, inClosestControl: closestControl });
+            qty({
+                currentInput, inClosestControl: closestControl
+            });
             break;
 
         case "OrigRate":

@@ -17,7 +17,8 @@ const defaultOptions = {
     inputClass: "",
     type: "text",
     enterAsTab: false,
-    evalformula: undefined
+    evalformula: undefined,
+    evalToControl: undefined
 };
 
 const getAttr = (el, names) => {
@@ -132,6 +133,10 @@ const getInputOptions = ({ inElement }) => {
         getAttr(inElement, ["evalformula"]) ||
         defaultOptions.evalformula;
 
+    const evalToControl = inElement.evalToControl ||
+        getAttr(inElement, ["evalToControl"]) ||
+        defaultOptions.evalToControl;
+
     return {
         inPlaceholder: placeholder,
         name: localName,
@@ -151,7 +156,8 @@ const getInputOptions = ({ inElement }) => {
         inputClass: inputClass,
         type,
         enterAsTab,
-        evalformula
+        evalformula,
+        evalToControl
     };
 };
 
