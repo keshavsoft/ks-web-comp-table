@@ -6,19 +6,26 @@ const startFunc = (input) => {
 
         const currentInput = event.currentTarget;
 
-        const tr = currentInput.closest("tr");
+        // const tr = currentInput.closest("body");
+        const tr =
+            currentInput.closest("form") ||
+            currentInput.closest("fieldset") ||
+            currentInput.closest("tr") ||
+            currentInput.closest("body");
 
-        const inputs = [...tr.querySelectorAll("input")];
+        if (tr) {
+            const inputs = [...tr.querySelectorAll("input")];
 
-        const currentIndex = inputs.indexOf(currentInput);
+            const currentIndex = inputs.indexOf(currentInput);
 
-        const nextInput = inputs[currentIndex + 1];
-        console.log("nextInput : ", nextInput);
+            const nextInput = inputs[currentIndex + 1];
+            // console.log("nextInput : ", nextInput);
 
-        if (nextInput) {
-            nextInput.focus();
-            nextInput.select();
-        }
+            if (nextInput) {
+                nextInput.focus();
+                nextInput.select();
+            };
+        };
     });
 };
 

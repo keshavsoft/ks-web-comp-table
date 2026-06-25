@@ -1,15 +1,15 @@
 const createTextInput = ({
-    inType,
+    type,
     inPlaceholder,
-    inName,
+    name,
     inClassName, inputClassName, inputClass
 }) => {
     const localInput =
         document.createElement("input");
 
-    localInput.type = inType;
+    localInput.type = type;
     localInput.placeholder = inPlaceholder;
-    localInput.name = inName;
+    localInput.name = name;
     localInput.setAttribute("class", inputClass || inputClassName || inClassName);
     // localInput.setAttribute("list", "aaaaaaaaaaa");
 

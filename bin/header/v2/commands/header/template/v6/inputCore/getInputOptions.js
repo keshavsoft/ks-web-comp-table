@@ -1,13 +1,13 @@
 const defaultOptions = {
     inPlaceholder: "",
-    inName: "",
+    name: "",
     inClassName: "w-full border rounded px-2 py-1",
     inShowDataList: undefined,
     inColumnsConfig: [],
     inOnChangeFunc: undefined,
     inOnChangeType: undefined,
     inOnKeyDown: undefined,
-    inOnKeyDownType: undefined,
+    onKeyDownType: undefined,
     inRightAlign: undefined,
     inWidth: undefined,
     inputClassName: undefined,
@@ -15,7 +15,8 @@ const defaultOptions = {
     inDataListFillName: "",
     inDataStore: undefined,
     inputClass: "",
-    inType: "text"
+    type: "text",
+    enterAsTab: false
 };
 
 const getAttr = (el, names) => {
@@ -41,7 +42,7 @@ const getInputOptions = ({ inElement }) => {
     const localName =
         inElement.ksName ||
         getAttr(inElement, ["ksName", "ks-name", "name"]) ||
-        defaultOptions.inName;
+        defaultOptions.name;
 
     const placeholder =
         inElement.ksPlaceholder ||
@@ -85,8 +86,8 @@ const getInputOptions = ({ inElement }) => {
         getAttr(inElement, ["ksOnKeyDown", "ks-on-key-down"]);
 
     const onKeyDownType =
-        inElement.ksOnKeyDownType ||
-        getAttr(inElement, ["ksOnKeyDownType", "ks-on-key-down-type"]);
+        inElement.onKeyDownType ||
+        getAttr(inElement, ["onKeyDownType", "ksOnKeyDownType", "ks - on - key - down - type"]);
 
     const rightAlign =
         inElement.ksRightAlign !== undefined
@@ -119,18 +120,23 @@ const getInputOptions = ({ inElement }) => {
 
     const type =
         getAttr(inElement, ["ksType", "ks-type", "type"]) ||
-        defaultOptions.inType;
+        defaultOptions.type;
+
+    const enterAsTab =
+        inElement.enterAsTab === "true" ||
+        getAttr(inElement, ["enterAsTab"]) === "true" ||
+        defaultOptions.enterAsTab;
 
     return {
         inPlaceholder: placeholder,
-        inName: localName,
+        name: localName,
         inClassName: className,
         inShowDataList: showDataList,
         inColumnsConfig: columnsConfig,
         inOnChangeFunc: onChangeFunc,
         inOnChangeType: onChangeType,
         inOnKeyDown: onKeyDown,
-        inOnKeyDownType: onKeyDownType,
+        onKeyDownType,
         inRightAlign: rightAlign,
         inWidth: width,
         inputClassName: inputClassName,
@@ -138,7 +144,8 @@ const getInputOptions = ({ inElement }) => {
         inDataListFillName: dataListFillName,
         inDataStore: dataStore,
         inputClass: inputClass,
-        inType: type
+        type,
+        enterAsTab
     };
 };
 

@@ -9,13 +9,19 @@ import attachEnterKeyEvent from "./attachEnterKeyEvent.js";
 class KsTableFooterInputCore extends HTMLElement {
     static defaults = defaultOptions;
 
+    get defaults() {
+        return this.constructor.defaults;
+    }
+
+    get options() {
+        return this.localOptions;
+    }
+
     connectedCallback() {
         const localOptions =
             getInputOptions({
                 inElement: this
             });
-
-        // console.log("------------------ : ", localOptions);
 
         this.localOptions = localOptions;
 
@@ -25,16 +31,16 @@ class KsTableFooterInputCore extends HTMLElement {
             inWidth: localOptions.inWidth
         });
 
-        const localInput =
-            createTextInput(localOptions);
-        // console.log("localInput------- : ", localInput, localOptions);
+        const localInput = createTextInput(localOptions);
 
         applyDataList({
             inInput: localInput,
             inDataListFillName: localOptions.inDataListFillName
         });
 
-        attachEnterKeyEvent(localInput);
+        if (localOptions.enterAsTab) {
+            attachEnterKeyEvent(localInput);
+        };
 
         this.renderInput({
             inInput: localInput

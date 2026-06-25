@@ -1,11 +1,11 @@
-import executeKeyDownType from "./ExecuteKeyDownType/v1/start.js";
+import executeKeyDownType from "./ExecuteKeyDownType/v2/start.js";
 
 const startFunc = (input) => {
     input.addEventListener("keydown", (event) => {
         const currentTarget = event.currentTarget;
 
         const inputElement = currentTarget.querySelector("input");
-        const ksOnKeyDownType = currentTarget.getAttribute("ksOnKeyDownType");
+        const ksOnKeyDownType = currentTarget.getAttribute("onKeyDownType");
 
         if (event.key === "Enter") {
             // console.log("ooooooo : ", event.key);
