@@ -6,10 +6,10 @@ const rateInclusiveFunc = ({
     const closestTr = inClosestControl;
 
     const origRateValue = currentInput.value;
-    const qty = closestTr.querySelector('[name="Qty"]').value
+    const qty = closestTr.querySelector('input[name="Qty"]').value
 
-    closestTr.querySelector('[name="OrigAmount"]').value = (origRateValue * qty).toFixed(2);
-    console.log("aaaaaaaaaaa");
+    closestTr.querySelector('input[name="OrigAmount"]').value = (origRateValue * qty).toFixed(2);
+    // console.log("aaaaaaaaaaa");
 
     showCalcMessage({
         input: currentInput,

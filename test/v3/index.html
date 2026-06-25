@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Custom Element Test Bed</title>
+
+</head>
+
+<body class="min-h-full flex flex-col justify-between">
+
+    <!-- <script src="../../Public/v2.6/KSTableComponents.js"></script> -->
+    <script src="../../bin/header/v2/commands/header/template/v6/index.js" type="module"></script>
+
+    <div>
+        <h3>Web Component Testing (ks-table-footer-input-core)</h3>
+
+        <!-- Static usage -->
+        <!-- <ks-table-footer-input-core name="staticInput" placeholder="Static Input..."></ks-table-footer-input-core> -->
+    </div>
+
+    <script>
+        // Dynamic usage: Create, configure, and append to body
+        const elementName = "ks-table-footer-input";
+
+        const input1 = () => {
+            const dynamicInput = document.createElement(elementName);
+
+            dynamicInput.setAttribute("name", "Qty");
+            dynamicInput.setAttribute("placeholder", "Qty");
+            dynamicInput.setAttribute("type", "number");
+            dynamicInput.setAttribute("onKeyDownType", "Qty");
+            dynamicInput.setAttribute("enterAsTab", true);
+
+            document.body.appendChild(dynamicInput);
+        };
+
+        const input2 = () => {
+            const dynamicInput = document.createElement(elementName);
+            
+            dynamicInput.setAttribute("name", "RateInc");
+            dynamicInput.setAttribute("placeholder", "RateInc");
+            dynamicInput.setAttribute("type", "number");
+            dynamicInput.setAttribute("onKeyDownType", "RateInc");
+
+            document.body.appendChild(dynamicInput);
+        };
+
+        const inputOrigRate = () => {
+            const dynamicInput = document.createElement(elementName);
+
+            dynamicInput.setAttribute("name", "OrigRate");
+            dynamicInput.setAttribute("placeholder", "OrigRate");
+            dynamicInput.setAttribute("type", "number");
+            dynamicInput.setAttribute("onKeyDownType", "OrigRate");
+
+            document.body.appendChild(dynamicInput);
+        };
+
+        const input3 = () => {
+            const dynamicInput = document.createElement(elementName);
+
+            dynamicInput.setAttribute("name", "Amount");
+            dynamicInput.setAttribute("placeholder", "Amount");
+            dynamicInput.setAttribute("type", "number");
+            dynamicInput.setAttribute("onKeyDownType", "Amount");
+
+            document.body.appendChild(dynamicInput);
+        };
+        // const dynamicInput = document.createElement("ks-table-footer-input-core");
+
+        // dynamicInput.setAttribute("name", "dynamicInput");
+        // dynamicInput.setAttribute("placeholder", "Dynamic Input...");
+        // dynamicInput.setAttribute("type", "number");
+
+        // document.body.appendChild(dynamicInput);
+        input1();
+        inputOrigRate();
+        input2();
+        input3();
+        // const defaultOptions = customElements.get("ks-table-footer-input-core");
+        // console.log("defaultOptions : ", defaultOptions.defaultOptions);
+
+    </script>
+</body>
+
+</html>
