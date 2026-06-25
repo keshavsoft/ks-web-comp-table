@@ -32,13 +32,14 @@
             dynamicInput.setAttribute("type", "number");
             dynamicInput.setAttribute("onKeyDownType", "Qty");
             dynamicInput.setAttribute("enterAsTab", true);
+            dynamicInput.setAttribute("evalformula", "OrigRate * Qty");
 
             document.body.appendChild(dynamicInput);
         };
 
         const input2 = () => {
             const dynamicInput = document.createElement(elementName);
-            
+
             dynamicInput.setAttribute("name", "RateInc");
             dynamicInput.setAttribute("placeholder", "RateInc");
             dynamicInput.setAttribute("type", "number");

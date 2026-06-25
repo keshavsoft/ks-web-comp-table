@@ -16,7 +16,8 @@ const defaultOptions = {
     inDataStore: undefined,
     inputClass: "",
     type: "text",
-    enterAsTab: false
+    enterAsTab: false,
+    evalformula: undefined
 };
 
 const getAttr = (el, names) => {
@@ -127,6 +128,10 @@ const getInputOptions = ({ inElement }) => {
         getAttr(inElement, ["enterAsTab"]) === "true" ||
         defaultOptions.enterAsTab;
 
+    const evalformula = inElement.evalformula ||
+        getAttr(inElement, ["evalformula"]) ||
+        defaultOptions.evalformula;
+
     return {
         inPlaceholder: placeholder,
         name: localName,
@@ -145,7 +150,8 @@ const getInputOptions = ({ inElement }) => {
         inDataStore: dataStore,
         inputClass: inputClass,
         type,
-        enterAsTab
+        enterAsTab,
+        evalformula
     };
 };
 
