@@ -1,4 +1,4 @@
-import executeKeyDownType from "./ExecuteKeyDownType/v4/start.js";
+import executeKeyDownType from "./ExecuteKeyDownType/v5/start.js";
 
 const startFunc = (input) => {
     input.addEventListener("keydown", (event) => {
