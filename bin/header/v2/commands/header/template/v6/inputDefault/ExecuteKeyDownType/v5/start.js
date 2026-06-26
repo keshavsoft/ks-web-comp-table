@@ -1,66 +1,30 @@
-import Amount from "./Amount.js";
-import qty from "./qty.js";
-import rateInclusive from "./rateInclusive.js";
-import rate from "./rate.js";
-import origRate from "./origRate.js";
-import origAmount from "./origAmount.js";
 import commonFuncToRun from "./commonFunc.js";
 
 const executeKeyDownType = ({
     currentInput,
-    inOnKeyDownType,
     inDefaultRow, closestTagIsTr
 }) => {
     let closestControl;
+
+    let el = currentInput.parentElement;
+
+    while (el && !el.tagName.includes("-")) {
+        el = el.parentElement;
+    };
+
+    const onKeyDownType = el.getAttribute("onKeyDownType");
+
+    // const ksOnKeyDownType = currentTarget.getAttribute("onKeyDownType");
 
     if (closestTagIsTr) {
         closestControl = currentInput.closest("body");
     };
 
-    if (inOnKeyDownType) {
+    if (onKeyDownType) {
         commonFuncToRun({
             currentInput, inClosestControl: closestControl
         });
     };
-
-    // // console.log("vvvvvvvvv : ", closestControl, inOnKeyDownType);
-    // switch (inOnKeyDownType) {
-    //     case "Amount":
-    //         origRate({ currentInput, inClosestControl: closestControl });
-    //         break;
-
-    //     case "Qty":
-    //         qty({
-    //             currentInput, inClosestControl: closestControl
-    //         });
-    //         break;
-
-    //     case "OrigRate":
-    //         origRate({ currentInput, inClosestControl: closestControl });
-    //         break;
-
-    //     case "OrigAmount":
-    //         origAmount({ currentInput, inClosestControl: closestControl });
-    //         break;
-
-    //     case "RateInc":
-    //         rateInclusive({
-    //             currentInput, inDefaultRow,
-    //             inClosestControl: closestControl
-    //         });
-
-    //         break;
-
-    //     case "Rate":
-    //         rate({
-    //             currentInput, inDefaultRow,
-    //             inClosestControl: closestControl
-    //         });
-
-    //         break;
-    //     default:
-    //         break;
-    // };
 };
 
 export default executeKeyDownType;

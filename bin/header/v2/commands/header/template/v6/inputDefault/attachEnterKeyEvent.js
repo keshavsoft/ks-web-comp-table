@@ -5,12 +5,10 @@ const startFunc = (input) => {
         const currentTarget = event.currentTarget;
 
         const inputElement = currentTarget.querySelector("input");
-        const ksOnKeyDownType = currentTarget.getAttribute("onKeyDownType");
 
         if (event.key === "Enter") {
             executeKeyDownType({
                 currentInput: inputElement,
-                inOnKeyDownType: ksOnKeyDownType,
                 inDefaultRow: {},
                 closestTagIsTr: true
             });

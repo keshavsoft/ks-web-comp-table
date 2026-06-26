@@ -17,6 +17,7 @@ const startFunc = ({
     currentInput, inClosestControl
 }) => {
     const closestTr = inClosestControl;
+
     let el = currentInput.parentElement;
 
     while (el && !el.tagName.includes("-")) {
