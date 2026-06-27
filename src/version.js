@@ -1,2 +1,2 @@
 // src/version.js
-export const templateVersion = "v2.6";
+export const templateVersion = "v2.7";
