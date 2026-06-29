@@ -4,9 +4,9 @@ export default {
     build: {
         lib: {
             entry: "src/header.js",
-            name: "KSTableComponents",
+            name: "KSComponents",
             formats: ["umd"],
-            fileName: () => `${templateVersion}/KSTableComponents.js`
+            fileName: () => `${templateVersion}/KSComponents.js`
         },
         outDir: "Public",
         emptyOutDir: false
