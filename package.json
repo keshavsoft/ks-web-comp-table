@@ -1,6 +1,6 @@
 {
   "name": "ks-web-comp-table",
-  "version": "2.10.1",
+  "version": "3.12.1",
   "description": "CLI to scaffold projects using templates",
   "keywords": [
     "tailwind",
