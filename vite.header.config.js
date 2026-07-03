@@ -36,45 +36,53 @@ if (templateVersions.length === 0) {
 }
 const latestTemplateVersion = templateVersions.at(-1);
 
-// 3. Combined version: e.g. v3.10
+// 3. Combined version: e.g. v3.11
 const combinedVersion = `${latestHeaderVersion}.${latestTemplateVersion.slice(1)}`;
 
-// 4. Update src/version.js for compatibility
-const versionFilePath = path.resolve(__dirname, "src/version.js");
-const expectedVersionContent = `// src/version.js
-export const templateVersion = "${combinedVersion}";
-`;
-if (!fs.existsSync(versionFilePath) || fs.readFileSync(versionFilePath, "utf8") !== expectedVersionContent) {
-    fs.writeFileSync(versionFilePath, expectedVersionContent, "utf8");
-}
-
-// 5. Update src/header.js for compatibility & entry
-const headerFilePath = path.resolve(__dirname, "src/header.js");
-const expectedHeaderContent = `// src/header.js
-import initVerticalComp from "../bin/header/${latestHeaderVersion}/commands/header/template/${latestTemplateVersion}/index.js";
-
-(async () => {
-    window.KSTableFootVersion = "${combinedVersion}";
-
-    window.KSTableFoot = initVerticalComp;
-})();
-`;
-if (!fs.existsSync(headerFilePath) || fs.readFileSync(headerFilePath, "utf8") !== expectedHeaderContent) {
-    fs.writeFileSync(headerFilePath, expectedHeaderContent, "utf8");
-}
-
-// 6. Check if output already exists in dist/
+// 4. Check if output already exists in dist/
 const outputFilePath = path.resolve(__dirname, "dist", combinedVersion, "KSComponents.js");
 
 if (fs.existsSync(outputFilePath)) {
     console.log("\x1b[33m%s\x1b[0m", `[ALERT] Latest version ${combinedVersion} already present in dist. Skipping build.`);
 } else {
+    // 5. Define Rollup/Vite plugin for the virtual entry point (no disk writes!)
+    const virtualFilePath = path.resolve(__dirname, "src/virtual-entry.js").replace(/\\/g, '/');
+
+    const virtualEntryPlugin = {
+        name: 'virtual-entry',
+        resolveId(id) {
+            const normalizedId = path.resolve(__dirname, id).replace(/\\/g, '/');
+            if (normalizedId === virtualFilePath) {
+                return virtualFilePath;
+            }
+            return null;
+        },
+        load(id) {
+            const normalizedId = path.resolve(__dirname, id).replace(/\\/g, '/');
+            if (normalizedId === virtualFilePath) {
+                const templateIndexFilePath = path.resolve(templatePath, latestTemplateVersion, "index.js");
+                const templateIndexPathNormalized = templateIndexFilePath.replace(/\\/g, '/');
+
+                return `
+import initVerticalComp from "${templateIndexPathNormalized}";
+
+(async () => {
+    window.KSTableFootVersion = "${combinedVersion}";
+    window.KSTableFoot = initVerticalComp;
+})();
+`;
+            }
+            return null;
+        }
+    };
+
     const config = {
         configFile: false,
         publicDir: false,
+        plugins: [virtualEntryPlugin],
         build: {
             lib: {
-                entry: headerFilePath,
+                entry: virtualFilePath,
                 name: "KSComponents",
                 formats: ["umd"],
                 fileName: () => `${combinedVersion}/KSComponents.js`
