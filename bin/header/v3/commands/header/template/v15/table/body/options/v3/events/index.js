@@ -1,0 +1,32 @@
+import editClick from "./editClick.js";
+import cancelClick from "./cancelClick.js";
+import updateClick from "./updateClick.js";
+import deleteClick from "./deleteClick.js";
+
+const hookEvents = ({ editBtn, deleteBtn, updateBtn, cancelBtn, options }) => {
+    if (editBtn) {
+        editBtn.onclick = (event) => {
+            editClick({ event, options });
+        };
+    }
+
+    if (cancelBtn) {
+        cancelBtn.onclick = (event) => {
+            cancelClick({ event });
+        };
+    }
+
+    if (updateBtn) {
+        updateBtn.onclick = (event) => {
+            updateClick({ event, options });
+        };
+    }
+
+    if (deleteBtn) {
+        deleteBtn.onclick = (event) => {
+            deleteClick({ event, options });
+        };
+    }
+};
+
+export default hookEvents;
