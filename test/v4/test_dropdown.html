@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Test</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6 text-center text-blue-400">ks-dropdown Web Component Verification</h1>
+        
+        <!-- Web Component Navbar -->
+        <ks-nav ks-title="Quotations" ks-title-id="title-logo" ks-nav-class="bg-gray-800 text-white rounded-lg shadow-xl mb-12">
+            <!-- Normal Menu Items -->
+            <ks-menu-item ks-textToShow="Create" ks-svgName="squaresPlus" ks-id="menu-create" ks-class="hover:bg-gray-700"></ks-menu-item>
+            
+            <!-- Dropdown Menu Item -->
+            <ks-dropdown ks-textToShow="More Options" ks-svgName="queueList" ks-id="menu-more" ks-class="hover:bg-gray-700">
+                <a href="#option1" id="opt-1">Show All</a>
+                <a href="#option2" id="opt-2">Descend</a>
+                <a href="#option3" id="opt-3">Print</a>
+            </ks-dropdown>
+        </ks-nav>
+        
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4 text-green-400">Interaction Log</h2>
+            <div id="log-box" class="font-mono text-sm bg-gray-950 p-4 rounded h-40 overflow-y-auto text-gray-400">
+                System initialized. Click navbar items to test.
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the built Web Components script -->
+    <script src="../../dist/v3.17/KSComponents.js" type="module"></script>
+    
+    <script>
+        // Log clicks for testing verification
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a');
+            if (anchor) {
+                const logBox = document.getElementById('log-box');
+                const logText = document.createElement('div');
+                logText.textContent = `Clicked: ${anchor.textContent.trim()} (ID: ${anchor.id || 'none'}, Href: ${anchor.getAttribute('href') || 'none'})`;
+                logBox.appendChild(logText);
+                logBox.scrollTop = logBox.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
