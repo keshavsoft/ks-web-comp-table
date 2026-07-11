@@ -11,15 +11,15 @@ const getLatestVersionInDir = (dirPath) => {
     return versions.at(-1);
 };
 
-const headerVersionsPath = path.resolve(__dirname, "../../bin/header");
-const vHeader = getLatestVersionInDir(headerVersionsPath);
+const componentVersionsPath = path.resolve(__dirname, "../../bin/components");
+const vComponent = getLatestVersionInDir(componentVersionsPath);
 
-const templatesPath = path.resolve(__dirname, `../../bin/header/${vHeader}/commands/header/template`);
+const templatesPath = path.resolve(__dirname, `../../bin/components/${vComponent}/commands/header/template`);
 const vTemplate = getLatestVersionInDir(templatesPath);
 
 const targetModulePath = path.resolve(
     __dirname,
-    `../../bin/header/${vHeader}/commands/header/template/${vTemplate}/inputCore/getInputOptions.js`
+    `../../bin/components/${vComponent}/commands/header/template/${vTemplate}/inputCore/getInputOptions.js`
 );
 
 // Use a file URL for dynamic import compatibility across operating systems
