@@ -1,0 +1,19 @@
+import showCalcMessage from "./showCalcMessage.js";
+
+const rateInclusiveFunc = ({
+    currentInput, inClosestControl
+}) => {
+    const closestTr = inClosestControl;
+
+    const rate = currentInput.value;
+    const qty = closestTr.querySelector('[name="Qty"]').value
+
+    closestTr.querySelector('[name="Amount"]').value = (rate * qty).toFixed(2);
+
+    showCalcMessage({
+        input: currentInput,
+        message: `rate change : ${rate}`
+    });
+};
+
+export default rateInclusiveFunc;
